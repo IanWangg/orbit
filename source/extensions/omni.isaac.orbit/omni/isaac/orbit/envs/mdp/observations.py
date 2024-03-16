@@ -126,6 +126,11 @@ def joint_vel_rel(env: BaseEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg("robo
 Sensors.
 """
 
+def lidar_scan(env: BaseEnv, sensor_cfg: SceneEntityCfg) -> torch.Tensor:
+    """Lidar scan from the given sensor w.r.t. the sensor's frame."""
+    # extract the used quantities (to enable type-hinting)
+    sensor: RayCaster = env.scene.sensors[sensor_cfg.name]
+    return sensor.data.ray_hits_w
 
 def height_scan(env: BaseEnv, sensor_cfg: SceneEntityCfg, offset: float = 0.5) -> torch.Tensor:
     """Height scan from the given sensor w.r.t. the sensor's frame.

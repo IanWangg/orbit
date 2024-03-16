@@ -5,7 +5,7 @@
 
 import gymnasium as gym
 
-from . import agents, flat_env_cfg, rough_env_cfg
+from . import agents, flat_env_cfg, rough_env_cfg, parkour_env_cfg
 
 ##
 # Register Gym environments.
@@ -48,5 +48,25 @@ gym.register(
     kwargs={
         "env_cfg_entry_point": rough_env_cfg.UnitreeGo2RoughEnvCfg_PLAY,
         "rsl_rl_cfg_entry_point": agents.rsl_rl_cfg.UnitreeGo2RoughPPORunnerCfg,
+    },
+)
+
+gym.register(
+    id="Isaac-Velocity-Parkour-Unitree-Go2-v0",
+    entry_point="omni.isaac.orbit.envs:RLTaskEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": parkour_env_cfg.UnitreeGo2ParkourEnvCfg,
+        "rsl_rl_cfg_entry_point": agents.rsl_rl_cfg.UnitreeGo2ParkourPPORunnerCfg,
+    },
+)
+
+gym.register(
+    id="Isaac-Velocity-Parkour-Unitree-Go2-Play-v0",
+    entry_point="omni.isaac.orbit.envs:RLTaskEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": parkour_env_cfg.UnitreeGo2ParkourEnvCfg_PLAY,
+        "rsl_rl_cfg_entry_point": agents.rsl_rl_cfg.UnitreeGo2ParkourPPORunnerCfg,
     },
 )

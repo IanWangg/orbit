@@ -1,0 +1,1 @@
+./orbit.sh -p source/standalone/workflows/rsl_rl/train.py --task Isaac-Velocity-Parkour-Unitree-Go2-v0
